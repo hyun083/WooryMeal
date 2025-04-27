@@ -6,13 +6,31 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D281331E2DBB7BB90028B00A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D281331D2DBB7BB90028B00A /* .gitignore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		D281331D2DBB7BB90028B00A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D2D0D3AC2D10579300C7CC97 /* wooryMeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wooryMeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D28132C82DB4EB810028B00A /* Exceptions for "wooryMeal" folder in "wooryMeal" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D2D0D3AB2D10579300C7CC97 /* wooryMeal */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D2D0D3AE2D10579300C7CC97 /* wooryMeal */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D28132C82DB4EB810028B00A /* Exceptions for "wooryMeal" folder in "wooryMeal" target */,
+			);
 			path = wooryMeal;
 			sourceTree = "<group>";
 		};
@@ -32,6 +50,7 @@
 		D2D0D3A32D10579300C7CC97 = {
 			isa = PBXGroup;
 			children = (
+				D281331D2DBB7BB90028B00A /* .gitignore */,
 				D2D0D3AE2D10579300C7CC97 /* wooryMeal */,
 				D2D0D3AD2D10579300C7CC97 /* Products */,
 			);
@@ -109,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D281331E2DBB7BB90028B00A /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +147,8 @@
 /* Begin XCBuildConfiguration section */
 		D2D0D3B82D10579400C7CC97 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = D2D0D3AE2D10579300C7CC97 /* wooryMeal */;
+			baseConfigurationReferenceRelativePath = Debug.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -190,6 +212,8 @@
 		};
 		D2D0D3B92D10579400C7CC97 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = D2D0D3AE2D10579300C7CC97 /* wooryMeal */;
+			baseConfigurationReferenceRelativePath = Release.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -246,6 +270,8 @@
 		};
 		D2D0D3BB2D10579400C7CC97 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = D2D0D3AE2D10579300C7CC97 /* wooryMeal */;
+			baseConfigurationReferenceRelativePath = Debug.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -255,6 +281,7 @@
 				DEVELOPMENT_TEAM = 2GY4XTB4R5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = wooryMeal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -275,6 +302,8 @@
 		};
 		D2D0D3BC2D10579400C7CC97 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = D2D0D3AE2D10579300C7CC97 /* wooryMeal */;
+			baseConfigurationReferenceRelativePath = Release.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -284,6 +313,7 @@
 				DEVELOPMENT_TEAM = 2GY4XTB4R5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = wooryMeal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

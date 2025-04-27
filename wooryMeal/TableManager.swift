@@ -9,7 +9,12 @@ import Foundation
 
 class TableManager{
     static let shared = TableManager()
-    private let serviceURL = "https://meal-api-server.fly.dev"
+    private var serviceURL:String{
+        guard let url = Bundle.main.object(forInfoDictionaryKey: "SERVICE_URL") as? String else{
+            fatalError( "ServiceURL not found")
+        }
+        return url
+    }
     
     func fetchMenuData(completion: @escaping (Result<[Table], Error>) -> Void){
         print("fetchMenuData...")
