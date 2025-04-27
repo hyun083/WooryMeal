@@ -12,6 +12,7 @@ struct Table: Codable, Identifiable{
     let id:Int
     let date: String
     let meals: Meals
+    let order: [String]
 }
 
 // MARK: - Meals

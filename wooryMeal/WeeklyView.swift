@@ -107,6 +107,6 @@ struct mealListView: View{
 }
 
 #Preview {
-    let menus: [Table] = [Table(id: 1, date: "2025-01-21", meals: Meals(lunch: Meal(), dinner: Meal()))]
+    let menus: [Table] = [Table(id: 1, date: "2025-01-21", meals: Meals(lunch: Meal(), dinner: Meal()), order: ["1조","2조","3조"])]
     WeeklyView(menus: menus)
 }

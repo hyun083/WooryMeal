@@ -18,8 +18,9 @@ struct ContentView: View {
                     Text("금일식단")
                         .font(.title2)
                     Spacer()
+                    Text(menuVM.todayMenu?.order.joined(separator: " → ") ?? "")
                 }
-                .padding(.leading, 20)
+                .padding(.horizontal, 20)
                 HStack{
                     MenuView(meal: menuVM.todayMenu?.meals.lunch ?? Meal(), type: "점심")
                     MenuView(meal: menuVM.todayMenu?.meals.dinner ?? Meal(), type: "저녁")

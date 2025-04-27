@@ -40,7 +40,7 @@ class MenuViewModel: ObservableObject {
                         }else if menu.date > self.dateFormatter.string(from: now){
                             self.menus.append(menu)
                         }
-                        print(menu.date)
+                        print(menu.date,menu.order)
                     }
                 case .failure(let error):
                     self.errorMessage = error.localizedDescription
