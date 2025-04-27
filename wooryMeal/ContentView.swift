@@ -26,6 +26,7 @@ struct ContentView: View {
                     MenuView(meal: menuVM.todayMenu?.meals.dinner ?? Meal(), type: "저녁")
                     Spacer()
                 }
+                .padding(.horizontal,15)
                 Spacer()
                 WeeklyView(menus: menuVM.menus)
             }
