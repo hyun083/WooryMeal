@@ -29,7 +29,6 @@ struct ContentView: View {
                 Spacer()
                 WeeklyView(menus: menuVM.menus)
             }
-            //.navigationTitle(Text("금일 식단"))
             .navigationBarTitleDisplayMode(.large)
         }
         .onAppear(){
@@ -42,7 +41,6 @@ struct ContentView: View {
                 menuVM.fetchMenus()
             }
         }
-
         Spacer()
     }
 }

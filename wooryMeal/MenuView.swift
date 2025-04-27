@@ -46,21 +46,3 @@ struct MenuView: View {
     let meal = Meal(rice: ["햄야채볶음밥1111111"], soup: "곤약어묵탕", dishes: ["국물떡볶이", "모둠튀김", "봄동겉절이"], kimchi: "깍두기", plusCorner: ["그린샐러드","매실주스"])
     MenuView(meal: meal, type: "점심")
 }
-/*
-VStack(alignment: .leading){
-    Text(type)
-        .padding(.vertical,2.5)
-        .padding(.horizontal, 7)
-        .overlay(content: {
-            RoundedRectangle(cornerRadius: 5)
-                .stroke(Color.gray)
-        })
-    Text(meal.rice.joined(separator: ", "))
-    Text(meal.soup)
-    ForEach(meal.dishes, id: \.self){ dish in
-        Text(dish)
-    }
-    Text(meal.kimchi)
-    Spacer()
-}
-*/

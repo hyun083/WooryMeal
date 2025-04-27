@@ -26,8 +26,7 @@ struct WeeklyView: View {
                                         Text("점심")
                                             .padding(.vertical,2.5)
                                             .padding(.horizontal, 7)
-                                            .overlay(content: {
-                                                RoundedRectangle(cornerRadius: 5)
+                                            .overlay(content: { RoundedRectangle(cornerRadius: 5)
                                                     .stroke(Color.gray)
                                             })
                                         mealListView(meal: lunch)
@@ -41,8 +40,7 @@ struct WeeklyView: View {
                                         Text("저녁")
                                             .padding(.vertical,2.5)
                                             .padding(.horizontal, 7)
-                                            .overlay(content: {
-                                                RoundedRectangle(cornerRadius: 5)
+                                            .overlay(content: { RoundedRectangle(cornerRadius: 5)
                                                     .stroke(Color.gray)
                                             })
                                         mealListView(meal: dinner)
@@ -52,34 +50,6 @@ struct WeeklyView: View {
                             }
                         }
                         .padding(.horizontal)
-                        /*
-                        Text(item.date)
-                            .font(.headline)
-                        if let lunch = item.meals.lunch{
-                            HStack{
-                                Text("점심")
-                                    .padding(.vertical,2.5)
-                                    .padding(.horizontal, 7)
-                                    .overlay(content: {
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .stroke(Color.gray)
-                                    })
-                                mealListView(meal: lunch)
-                            }
-                        }
-                        if let dinner = item.meals.dinner{
-                            HStack{
-                                Text("저녁")
-                                    .padding(.vertical,2.5)
-                                    .padding(.horizontal, 7)
-                                    .overlay(content: {
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .stroke(Color.gray)
-                                    })
-                                mealListView(meal: dinner)
-                            }
-                        }
-                         */
                     }
                 }
             }
