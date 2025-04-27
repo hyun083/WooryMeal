@@ -49,11 +49,15 @@ struct WeeklyView: View {
                                 }
                             }
                         }
+                        .overlay(content: { RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray)
+                        })
                         .padding(.horizontal)
                     }
                 }
             }
             //.background(Color.red)
+            .padding(.vertical, 1)
         }
     }
 }
