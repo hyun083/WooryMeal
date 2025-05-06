@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MenuView: View {
-    let meal:Meal
+    let mealData:Meal?
     let type:String
     var body: some View {
         GroupBox(label: Text(type)
@@ -18,21 +18,29 @@ struct MenuView: View {
                     .stroke(Color.gray)
             })
         ){
-            ScrollView(content: {
-                VStack(alignment: .leading){
-                    Text(meal.rice.joined(separator: ", "))
-                    Text(meal.soup)
-                    ForEach(meal.dishes, id: \.self){ dish in
-                        Text(dish)
+            if let meal = mealData{
+                ScrollView(content: {
+                    VStack(alignment: .leading){
+                        Text(meal.rice.joined(separator: ", "))
+                        Text(meal.soup)
+                        ForEach(meal.dishes, id: \.self){ dish in
+                            Text(dish)
+                        }
+                        Text(meal.kimchi)
+                        ForEach(meal.plusCorner, id: \.self){ dish in
+                            Text(dish)
+                        }
+                        Spacer()
                     }
-                    Text(meal.kimchi)
-                    ForEach(meal.plusCorner, id: \.self){ dish in
-                        Text(dish)
-                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                })
+            }else{
+                VStack(alignment: .center){
+                    Spacer()
+                    Text("미운영")
                     Spacer()
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-            })
+            }
         }
         .overlay(content: { RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.gray)
@@ -43,7 +51,6 @@ struct MenuView: View {
 }
 
 #Preview {
-    let long_meal = Meal(rice: ["쌀밥","현미밥","보리밥"], soup: "곤약어묵탕", dishes: ["국물떡볶이", "모둠튀김", "봄동겉절이"], kimchi: "깍두기", plusCorner: ["그린샐러드","매실주스","감자튀김"])
     let meal = Meal(rice: ["쌀밥","현미밥"], soup: "곤약어묵탕", dishes: ["국물떡볶이", "모둠튀김", "봄동겉절이"], kimchi: "깍두기", plusCorner: ["그린샐러드","매실주스"])
-    MenuView(meal: meal, type: "점심")
+    MenuView(mealData: meal, type: "점심")
 }

@@ -22,9 +22,8 @@ struct ContentView: View {
                 }
                 .padding(.horizontal, 20)
                 HStack{
-                    MenuView(meal: menuVM.todayMenu?.meals.lunch ?? Meal(), type: "점심")
-                    MenuView(meal: menuVM.todayMenu?.meals.dinner ?? Meal(), type: "저녁")
-                    Spacer()
+                        MenuView(mealData: menuVM.todayMenu?.meals.lunch, type: "오늘 점심")
+                        MenuView(mealData: menuVM.todayMenu?.meals.dinner, type: "오늘 저녁")
                 }
                 .padding(.horizontal,15)
                 Spacer()
