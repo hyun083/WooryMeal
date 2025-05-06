@@ -15,10 +15,12 @@ struct ContentView: View {
         NavigationView(){
             VStack{
                 HStack{
-                    Text("금일식단")
-                        .font(.title2)
+                    Image("woory_logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100)
                     Spacer()
-                    Text(menuVM.todayMenu?.order.joined(separator: " → ") ?? "")
+                    Text(menuVM.todayMenu?.order.joined(separator: " → ") ?? " ")
                 }
                 .padding(.horizontal, 20)
                 HStack{
