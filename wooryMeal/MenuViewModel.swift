@@ -48,22 +48,29 @@ class MenuViewModel: ObservableObject {
                 switch result {
                 case .success(let menus):
                     let now = Date()
-                    print("success on \(self.dateFormatter.string(from: now))")
+                    
+                    self.todayMenu = nil
                     self.menus = []
                     for menu in menus{
-                        /*
-                        if menu.date == "2025-03-31"{
+                        #if false
+                        let testDate = "2025-06-16"
+                        if menu.date == testDate{
                             self.todayMenu = menu
-                        }else if menu.date > "2025-03-31"{
+                        }else if menu.date > testDate{
                             self.menus.append(menu)
                         }
-                         */
+                        #else
                         if menu.date == self.dateFormatter.string(from: now){
                             self.todayMenu = menu
+                            print(menu.date,"today")
                         }else if menu.date > self.dateFormatter.string(from: now){
                             self.menus.append(menu)
+                            if let date = self.dateFormatter.date(from: menu.date){
+                                let weekday = Calendar.current.component(.weekday, from: date)
+                                print(menu.date,weekday,"요일 ")
+                            }
                         }
-                        print(menu.date,menu.order)
+                        #endif
                     }
                 case .failure(let error):
                     self.errorMessage = error.localizedDescription
