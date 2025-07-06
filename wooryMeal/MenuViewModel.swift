@@ -26,7 +26,7 @@ class MenuViewModel: ObservableObject {
     init(){
         self.region = {
             if let regionTypeString = UserDefaults.standard.string(forKey: "region"){
-                return RegionType(rawValue: regionTypeString)!
+                return RegionType(rawValue: regionTypeString) ?? .yongin
             }else{
                 return .yongin
             }
