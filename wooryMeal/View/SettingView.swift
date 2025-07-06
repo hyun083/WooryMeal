@@ -45,7 +45,7 @@ struct SettingView: View {
                 Button(){
                     showAddAlert = true
                 }label: {
-                    Label("Add", systemImage: "plus")
+                    Label("추가", systemImage: "plus")
                 }
                 .alert("선호 음식 추가", isPresented: $showAddAlert, actions: {
                     TextField("음식 이름", text: $newKeyword)
