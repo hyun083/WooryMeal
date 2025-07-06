@@ -10,6 +10,8 @@ import SwiftUI
 struct MenuView: View {
     let mealData:Meal?
     let type:String
+    let preferredMenu:[String]
+    
     var body: some View {
         GroupBox(label: Text(type)
             .padding(.vertical,2.5)
@@ -21,14 +23,17 @@ struct MenuView: View {
             if let meal = mealData{
                 ScrollView(content: {
                     VStack(alignment: .leading){
-                        Text(meal.rice.joined(separator: ", "))
-                        Text(meal.soup)
-                        ForEach(meal.dishes, id: \.self){ dish in
-                            Text(dish)
+                        meal.rice.reduce(Text("")){res, riceStr in
+                            let value = MealText(str: riceStr, with: preferredMenu).asText()
+                            return res + value + (meal.rice.last == riceStr ? Text("") : Text(", "))
                         }
-                        Text(meal.kimchi)
+                        MealText(str: meal.soup, with: preferredMenu)
+                        ForEach(meal.dishes, id: \.self){ dish in
+                            MealText(str: dish, with: preferredMenu)
+                        }
+                        MealText(str:meal.kimchi, with: preferredMenu)
                         ForEach(meal.plusCorner, id: \.self){ dish in
-                            Text(dish)
+                            MealText(str: dish, with: preferredMenu)
                         }
                         Spacer()
                     }
@@ -52,5 +57,5 @@ struct MenuView: View {
 
 #Preview {
     let meal = Meal(rice: ["쌀밥","현미밥"], soup: "곤약어묵탕", dishes: ["국물떡볶이", "모둠튀김", "봄동겉절이"], kimchi: "깍두기", plusCorner: ["그린샐러드","매실주스"])
-    MenuView(mealData: meal, type: "점심")
+    MenuView(mealData: meal, type: "점심", preferredMenu: ["김","떡","밥"])
 }

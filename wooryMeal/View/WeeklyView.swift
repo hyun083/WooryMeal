@@ -10,6 +10,7 @@ import SwiftUI
 struct WeeklyView: View {
     //static let menus: [Table] = [Table(id: 1, date: "2025-01-21", meals: Meals(lunch: Meal(), dinner: Meal()))]
     let menus: [Table]
+    let preferredMenu: [String]
 
     var body: some View {
         ScrollView{
@@ -29,7 +30,7 @@ struct WeeklyView: View {
                                             .overlay(content: { RoundedRectangle(cornerRadius: 5)
                                                     .stroke(Color.gray)
                                             })
-                                        mealListView(meal: lunch)
+                                        mealListView(meal: lunch, prefered: preferredMenu)
                                     }
                                     Spacer()
                                 }
@@ -43,7 +44,7 @@ struct WeeklyView: View {
                                             .overlay(content: { RoundedRectangle(cornerRadius: 5)
                                                     .stroke(Color.gray)
                                             })
-                                        mealListView(meal: dinner)
+                                        mealListView(meal: dinner, prefered: preferredMenu)
                                     }
                                     Spacer()
                                 }
@@ -65,6 +66,7 @@ struct WeeklyView: View {
 struct mealListView: View{
     let meal: Meal
     let data: [String]
+    let preferredMenu: [String]
     
     init(meal: Meal) {
         self.meal = meal
@@ -73,14 +75,32 @@ struct mealListView: View{
         + meal.dishes
         + [meal.kimchi]
         + meal.plusCorner
+        self.preferredMenu = []
+    }
+    
+    init(meal: Meal, prefered: [String]) {
+        self.meal = meal
+        self.data = meal.rice
+        + [meal.soup]
+        + meal.dishes
+        + [meal.kimchi]
+        + meal.plusCorner
+        self.preferredMenu = prefered
+    }
+
+    var mealList: Text{
+        data.reduce(Text("")){ res, item in
+            let meal = MealText(str: item, with: preferredMenu).asText()
+            return res + meal + (data.last == item ? Text("") : Text(", "))
+        }
     }
     
     var body: some View{
-        Text(data.joined(separator: ", "))
+        mealList
     }
 }
 
 #Preview {
     let menus: [Table] = [Table(id: 1, date: "2025-01-21", meals: Meals(lunch: Meal(), dinner: Meal()), order: ["1조","2조","3조"])]
-    WeeklyView(menus: menus)
+    WeeklyView(menus: menus, preferredMenu: [])
 }
