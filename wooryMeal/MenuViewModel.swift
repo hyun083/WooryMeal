@@ -7,18 +7,41 @@
 
 import Foundation
 
+enum RegionType:String{
+    case yongin, pyeongtaek
+}
+
 class MenuViewModel: ObservableObject {
     @Published var menus: [Table] = []
     @Published var errorMessage: String?
     @Published var todayMenu: Table?
-    
-    var calender = Calendar.current
-    let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
+    @Published var region: RegionType{
+        didSet{ setSelectedRegion() }
+    }
+    @Published var preferredMenu: [String]{
+        didSet{ setPreferredMenu() }
+    }
+    let dateFormatter: DateFormatter
 
+    init(){
+        self.region = {
+            if let regionTypeString = UserDefaults.standard.string(forKey: "region"){
+                return RegionType(rawValue: regionTypeString)!
+            }else{
+                return .yongin
+            }
+        }()
+        
+        self.preferredMenu = UserDefaults.standard.object(forKey: "userPreferred") as? [String] ?? [String]()
+        
+        self.dateFormatter = {
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "ko_KR")
+            formatter.dateFormat = "yyyy-MM-dd"
+            return formatter
+        }()
+    }
+    
     func fetchMenus() {
         TableManager.shared.fetchMenuData { result in
             DispatchQueue.main.async {
@@ -60,5 +83,15 @@ class MenuViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func setSelectedRegion(){
+        UserDefaults.standard.set(self.region.rawValue, forKey: "region")
+        print("region: \(self.region.rawValue) set.")
+    }
+    
+    func setPreferredMenu(){
+        UserDefaults.standard.set(self.preferredMenu, forKey: "userPreferred")
+        print("userPreferred updated",self.preferredMenu)
     }
 }
